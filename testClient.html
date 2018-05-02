@@ -1,0 +1,22 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+</head>
+
+<body>
+  <div id="output"></div>
+  <script>
+    const output = document.querySelector('#output')
+    const key = 'diId3xvkmycsaVjZgfo'
+    const socket = io.connect(`http://localhost:8080?key=${key}`);
+
+
+    const event = {
+      hello: 'hello'
+    }
+
+    socket.on(event.hello, data => {
+      console.log(data);
+      output.innerHTML = `Response: ${JSON.stringify(data, null, 2)}`;
+    });
+  </script>
+</body>
